@@ -5,4 +5,5 @@ if [ ! -f /data/station.conf ]; then
   cp /opt/station.conf /data/station.conf
 fi
 
-exec /opt/basicstation/build-rpi-std/bin/station -f /data/station.conf
+cd /data
+exec /opt/basicstation/build-rpi-std/bin/station
