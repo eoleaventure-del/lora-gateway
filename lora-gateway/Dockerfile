@@ -10,4 +10,12 @@ RUN apt-get update && apt-get install -y \
     && cd basicstation \
     && make platform=rpi variant=std
 
-CMD ["/opt/basicstation/build-rpi-std/bin/station", "-f", "/tmp/balena/data/station.conf"]
+# Copier le fichier de config dans l'image
+COPY station.conf /opt/station.conf
+
+# Copier le script d'entrée
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Lancement du container
+CMD ["/entrypoint.sh"]
