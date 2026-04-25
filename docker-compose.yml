@@ -3,7 +3,10 @@ version: '2.1'
 services:
   lora-gateway:
     build: ./lora-gateway
-    privileged: true
     restart: always
     volumes:
       - station-data:/data
+
+volumes:
+  station-data:
+    
