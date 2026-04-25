@@ -5,3 +5,5 @@ services:
     build: ./lora-gateway
     privileged: true
     restart: always
+    volumes:
+      - station-data:/data
