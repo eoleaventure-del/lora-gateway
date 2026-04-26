@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
 # Copier les fichiers de config
 COPY station.conf /opt/station.conf
 COPY tc.uri /opt/tc.uri
+COPY tc.trust /opt/tc.trust
 
 # entrypoint
 COPY entrypoint.sh /entrypoint.sh

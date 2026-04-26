@@ -15,6 +15,11 @@ if [ ! -f /data/tc.uri ]; then
   cp /opt/tc.uri /data/tc.uri
 fi
 
+if [ ! -f /data/tc.trust ]; then
+  echo "Init tc.trust"
+  cp /opt/tc.trust /data/tc.trust
+fi
+
 cd /data
 
 echo "Launching station..."
