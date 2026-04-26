@@ -10,12 +10,16 @@ RUN apt-get update && apt-get install -y \
     && cd basicstation \
     && make platform=rpi variant=std
 
-# Copier le fichier de config dans l'image
+# config persistée
+# Copier les fichiers de config
 COPY station.conf /opt/station.conf
+COPY tc.uri /opt/tc.uri
 
-# Copier le script d'entrée
+# entrypoint
 COPY entrypoint.sh /entrypoint.sh
+
 RUN chmod +x /entrypoint.sh
 
-# Lancement du container
-CMD ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["/opt/basicstation/build-rpi-std/bin/station", "-f", "/data/station.conf"]
