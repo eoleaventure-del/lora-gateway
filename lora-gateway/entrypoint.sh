@@ -1,22 +1,23 @@
 #!/bin/sh
-
 set -e
 
-echo "Starting entrypoint..."
+echo "DEBUG ENTRYPOINT OK"
 
-# Init config si absente
-if [ ! -f /data/station.conf ]; then
-  echo "Init station.conf"
-  cp /opt/station.conf /data/station.conf
-fi
+cd /opt/basicstation/build-rpi-std/bin
 
-if [ ! -f /data/tc.uri ]; then
-  echo "Init tc.uri"
-  cp /opt/tc.uri /data/tc.uri
-fi
+# copier les fichiers au bon endroit
+cp /opt/station.conf ./station.conf
+cp /opt/cups.uri ./cups.uri
+cp /opt/tc.uri ./tc.uri
+cp /opt/cups.trust ./cups.trust
+cp /opt/tc.trust ./tc.trust
 
-cd /data
+echo "FILES PRESENT:"
+ls -l
 
-echo "Launching station..."
+echo "STARTING BASICSTATION..."
 
-exec /opt/basicstation/build-rpi-std/bin/station
+# purge arguments parasites
+set --
+
+exec ./station
