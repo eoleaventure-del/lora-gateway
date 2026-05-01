@@ -9,8 +9,8 @@ cd /opt/basicstation/build-rpi-std/bin
 cp /opt/station.conf ./station.conf
 cp /opt/cups.uri ./cups.uri
 cp /opt/tc.uri ./tc.uri
-cp /opt/cups.trust ./cups.trust
-cp /opt/tc.trust ./tc.trust
+cp /etc/ssl/certs/ca-certificates.crt ./cups.trust
+cp /etc/ssl/certs/ca-certificates.crt ./tc.trust
 
 echo "FILES PRESENT:"
 ls -l
